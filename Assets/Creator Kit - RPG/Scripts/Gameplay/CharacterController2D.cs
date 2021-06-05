@@ -50,7 +50,7 @@ namespace RPGM.Gameplay
 
         void MoveState()
         {
-            velocity = Mathf.Clamp01(velocity + Time.deltaTime * acceleration);
+            velocity = Mathf.Clamp01(velocity + Time.deltaTime * acceleration*10);
             UpdateAnimator(nextMoveCommand);
             rigidbody2D.velocity = Vector2.SmoothDamp(rigidbody2D.velocity, nextMoveCommand * speed, ref currentVelocity, acceleration, speed);
             spriteRenderer.flipX = rigidbody2D.velocity.x >= 0 ? true : false;
