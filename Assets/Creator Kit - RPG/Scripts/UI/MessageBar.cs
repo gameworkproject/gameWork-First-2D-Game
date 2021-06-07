@@ -21,7 +21,8 @@ namespace RPGM.UI
 
         IEnumerator Start()
         {
-            var delay = new WaitForSeconds(2);
+            //changing this delay parmeter impacts how long the item collection message is shown
+            var delay = new WaitForSeconds(3);
             while (true)
             {
                 yield return null;
