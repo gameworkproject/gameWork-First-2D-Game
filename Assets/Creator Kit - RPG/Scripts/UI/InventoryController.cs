@@ -45,11 +45,24 @@ namespace RPGM.UI
                 e.gameObject.SetActive(true);
                 cursor.y -= stepSize;
             }
-
+            // var delay = new WaitForSeconds(3);
             if (displayCount > 0)
-                sizer.Show();
+                {
+                    sizer.Show();
+                    StartCoroutine(TimeDelay());
+                    // yield return null;
+                }
             else
-                sizer.Hide();
+                {
+                    sizer.Hide();
+                    // yield return null;
+                }
+        }
+        //added this to ensure the left dialogue once an item is picked up is removed
+        IEnumerator TimeDelay()
+        {
+            yield return new WaitForSeconds(4);
+            this.sizer.Hide();
         }
     }
 }
