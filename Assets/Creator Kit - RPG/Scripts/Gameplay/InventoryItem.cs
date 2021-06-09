@@ -10,7 +10,7 @@ namespace RPGM.Gameplay
     /// Marks a gameObject as a collectable item.
     /// </summary>
     [ExecuteInEditMode]
-    [RequireComponent(typeof(SpriteRenderer), typeof(CircleCollider2D))]
+    [RequireComponent(typeof(SpriteRenderer), typeof(CapsuleCollider2D))] // changed circle to capsule
     public class InventoryItem : MonoBehaviour
     {
         public int count = 1;
@@ -19,8 +19,8 @@ namespace RPGM.Gameplay
         GameModel model = Schedule.GetModel<GameModel>();
 
         void Reset()
-        {
-            GetComponent<CircleCollider2D>().isTrigger = true;
+        {   // changed to capsule to to fit the hammer and be resized for other objects in the future
+            GetComponent<CapsuleCollider2D>().isTrigger = true;
         }
 
         void OnEnable()
