@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/scenes/BlankScene.unity
+    guid: 1b7d0c35408919c47b8f5a6d1f3aa63a
+  - enabled: 1
+    path: Assets/scenes/physics_Quest1.unity
+    guid: c5e0624f835ba8b438327e9f9346615e
   m_configObjects: {}

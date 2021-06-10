@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
+using UnityEngine.SceneManagement;
 
 public class brick_script : MonoBehaviour
 {  //This script will check if the hammer has been collected, which will make colliding with the brick
@@ -28,10 +29,10 @@ public class brick_script : MonoBehaviour
     {
         collided = true;
 
-
         if(hammer_gone == true)
         {
             Debug.Log("welcome to task");
+            SceneManager.LoadScene(1);
         }
 
         else
@@ -40,5 +41,5 @@ public class brick_script : MonoBehaviour
             Debug.Log("go see mr ragee");
         }
     }
-    
+
 }
