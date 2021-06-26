@@ -32,7 +32,7 @@ public class ragee_physics_tools : MonoBehaviour
         //GameObject hammer = Instantiate(tool) as GameObject;
         //hammer.transform.position = new Vector2(-2.5f,1.39f);// location of the hammer
         Destroy(this); // kill the script component to prevent the box from making more than one hammer
-
+        Destroy(gameObject);
         //for hammer inventoryItem Collection
         hammer_2.transform.position = new Vector2( -2.5f,1 );
         

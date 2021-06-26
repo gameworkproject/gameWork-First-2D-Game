@@ -30,7 +30,10 @@ namespace RPGM.UI
         [ContextMenu("Show")]
         public void Show()
         {
-            direction = 1;
+            if (direction < 1){
+                direction = 1;
+            }
+            
         }
 
         [ContextMenu("Hide")]
