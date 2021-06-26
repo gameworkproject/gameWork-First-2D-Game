@@ -17,6 +17,10 @@ public class smash : MonoBehaviour
     public GameObject player;
     Vector3 physics1_location;
     Vector3 currentLocation;
+    public GameObject originalBrick;
+
+    SpriteRenderer sr_originalBrick;
+    Rigidbody2D rb_originalBrick;
 
     public static bool transported;
 
@@ -28,11 +32,17 @@ public class smash : MonoBehaviour
       physics1_location = new Vector3(36,2,0);
       currentLocation = player.transform.position;
       transported = false;
+
+       sr_originalBrick = originalBrick.GetComponent<SpriteRenderer>();
+       rb_originalBrick = originalBrick.GetComponent<Rigidbody2D>();
+
+      
       //smashing.GetComponents<ParticleSystem>().enableEmission = false;
     }
 
     void Awake()
     {
+     
       smashing = GetComponentInChildren<ParticleSystem>();
       sr = GetComponent<SpriteRenderer>();
       bc = GetComponent<BoxCollider2D>();
@@ -42,8 +52,8 @@ public class smash : MonoBehaviour
     {
       if(Input.GetKeyUp(KeyCode.Q))
       {
-        player.transform.position = new Vector3(-2,5,0);; // move the player to physics1 quest location instead of loading a new scene
-        player.transform.localScale = new Vector3(1,1,1);
+         // move the player to physics1 quest location instead of loading a new scene
+        returnPlayerPosition();
       }
 
       if(currentLocation == physics1_location)
@@ -74,21 +84,37 @@ public class smash : MonoBehaviour
         if(counter >= 5)
         {
           broken = true;
-         // sr.enabled = false;
+
+          if(broken == true)
+          {
+            //sr_originalBrick.enabled = false;
+            //rb_originalBrick.enabled = false;
+
+            Destroy(originalBrick);
+            
+            sr.enabled = false;
+            transported = false;
+            broken = false;
+            reward.transform.position = new Vector3(-2,6,0);
+            returnPlayerPosition(); 
+          }
+         // 
           //return to main land
-          //reward.transform.position = new Vector3(-2,5,0);
         }
 
-        if(broken == true)
-          {
-            reward.transform.position = new Vector3(-2,6,0);
-          }
+
       }
     }
 
     void FixedUpdate()
     {
 
+    }
+
+    void returnPlayerPosition()
+    {
+      player.transform.position = new Vector3(-2,5,0); // move the player to physics1 quest location instead of loading a new scene
+      player.transform.localScale = new Vector3(1,1,1);
     }
 
     IEnumerator Break()
