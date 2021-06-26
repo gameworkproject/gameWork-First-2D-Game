@@ -24,7 +24,7 @@ namespace RPGM.UI
             sizer = GetComponent<SpriteUIElement>();
             Refresh();
         }
-
+        //TODO
         // Update is called once per frame
         public void Refresh()
         {

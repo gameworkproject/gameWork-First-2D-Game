@@ -7,6 +7,7 @@ public class ragee_physics_tools : MonoBehaviour
     public GameObject player; // reference to player character
     //public GameObject tool; // reference to the hammer tool from the chest
     public GameObject hammer_2;
+
     public string nameOfSprite; // the name of the character
 
     void Start()
@@ -27,12 +28,13 @@ public class ragee_physics_tools : MonoBehaviour
     {
         nameOfSprite = player.GetComponent<SpriteRenderer>().sprite.name;
         Debug.Log(nameOfSprite);// print in the consol
-
+        
         //for hammer object prefab
         //GameObject hammer = Instantiate(tool) as GameObject;
         //hammer.transform.position = new Vector2(-2.5f,1.39f);// location of the hammer
+        
         Destroy(this); // kill the script component to prevent the box from making more than one hammer
-
+        Destroy(gameObject);
         //for hammer inventoryItem Collection
         hammer_2.transform.position = new Vector2( -2.5f,1 );
         

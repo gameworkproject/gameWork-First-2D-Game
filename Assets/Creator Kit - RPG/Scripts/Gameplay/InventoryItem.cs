@@ -13,7 +13,7 @@ namespace RPGM.Gameplay
     [RequireComponent(typeof(SpriteRenderer), typeof(CapsuleCollider2D))] // changed circle to capsule
     public class InventoryItem : MonoBehaviour
     {
-        public int count = 1;
+        public int count = 2;
         public Sprite sprite;
 
         GameModel model = Schedule.GetModel<GameModel>();
