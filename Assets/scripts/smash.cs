@@ -6,17 +6,26 @@ public class smash : MonoBehaviour
 {
     public ParticleSystem smashing;
     public GameObject hammer;
+    public GameObject reward;
     Rigidbody2D rb; 
     public bool hammerDown;
     public bool hammerUp;
     SpriteRenderer sr;
     BoxCollider2D bc;
+    float counter;
+    bool broken;
+    public GameObject player;
+    Vector3 physics1_location;
+    Vector3 currentLocation;
 
-    
     void Start()
     {
       rb = hammer.GetComponent<Rigidbody2D>();
       hammerUp = true;
+      counter = 0;
+      physics1_location = new Vector3(36,2,0);
+      currentLocation = player.transform.position;
+      
 
       //smashing.GetComponents<ParticleSystem>().enableEmission = false;
     }
@@ -30,20 +39,32 @@ public class smash : MonoBehaviour
 
     void Update()
     {
-      if (Input.GetKeyDown("space"))
+      if(currentLocation == physics1_location)
       {
-         hammer.transform.Rotate(0,0,-70);
-         hammerDown = true;
-         hammerUp = false;
-         StartCoroutine(Break());
- 
-         //smashing.enableEmission = true;
-      }
-      else if(Input.GetKeyUp("space"))
-      {
-        hammer.transform.Rotate(0,0,70);
-        hammerUp = true;
-        hammerDown = false;
+
+        if (Input.GetKeyDown("space")  && counter < 5)
+        {
+          hammer.transform.Rotate(0,0,-70);
+          hammerDown = true;
+          hammerUp = false;
+          StartCoroutine(Break());
+          counter = counter + 1;  
+
+        }
+        else if(Input.GetKeyUp("space") && counter < 5)
+        {
+          hammer.transform.Rotate(0,0,70);
+          hammerUp = true;
+          hammerDown = false;
+        }
+
+        if(counter >= 5)
+        {
+          broken = true;
+         // sr.enabled = false;
+          //return to main land
+          //reward.transform.position = new Vector3(-2,5,0);
+        }
       }
     }
 
@@ -58,10 +79,6 @@ public class smash : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-      Debug.Log("hits");
-    }
 
     //void OnTriggerEnter2D(Collision other)
     //{

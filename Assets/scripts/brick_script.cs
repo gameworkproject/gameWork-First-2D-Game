@@ -12,8 +12,12 @@ public class brick_script : MonoBehaviour
     public GameObject hammer_2; // hammer to break the rocks
     public bool hammer_gone;
     public bool collided;
+    public GameObject player;
+    Vector3 physics1_location;
+    
     void Start()
     {
+        physics1_location = new Vector3(36,2,0);
     }
 
     void Update()
@@ -32,7 +36,11 @@ public class brick_script : MonoBehaviour
         if(hammer_gone == true)
         {
             Debug.Log("welcome to task");
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
+            player.transform.position = physics1_location; // move the player to physics1 quest location instead of loading a new scene
+            player.transform.localScale = new Vector3(3.5f,3.5f,3.5f);
+
+            //turn off character controller
         }
 
         else
