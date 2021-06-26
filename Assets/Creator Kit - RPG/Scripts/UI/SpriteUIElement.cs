@@ -16,7 +16,11 @@ namespace RPGM.UI
         public Vector2 offset;
 
         public Vector2 hideOffset;
-
+        //variable used to determine how long to keep the UI of inventory shown after collecting inventory
+        public int DelayAmount;
+        protected float Timer = 0;
+        
+        public bool inventory_button_clicked = false;
         public AnimationCurve curve = AnimationCurve.Linear(0, 0, 1, 1);
         public float animationDuration = 0.5f;
 
@@ -30,16 +34,22 @@ namespace RPGM.UI
         [ContextMenu("Show")]
         public void Show()
         {
-            if (direction < 1){
+            if (direction < 1)
+            {
                 direction = 1;
             }
-            
+            Debug.Log("in show function");
+            if(inventory_button_clicked == false){
+            DelayAmount = 5;   
+            Debug.Log(DelayAmount);
+            }
         }
 
         [ContextMenu("Hide")]
         public void Hide()
         {
             direction = -1;
+            DelayAmount = 0;
         }
 
         public void Toggle()
@@ -70,6 +80,28 @@ namespace RPGM.UI
                 {
                     transform.position = pixelPerfectCamera.RoundToPixel(transform.position);
                 }
+            }
+            if(Input.GetKeyUp(KeyCode.Return))
+            {
+                Hide();
+                inventory_button_clicked = false;
+            }
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                Show();
+                inventory_button_clicked = true;
+            }
+            if(DelayAmount > 0){
+                Timer += Time.deltaTime;
+                if (Timer >= 1){
+                    Timer = 0;
+                    DelayAmount -= 1;
+                    Debug.Log("minus 1 second");
+                }
+            }
+            if(DelayAmount == 0 && inventory_button_clicked == false){
+                //Debug.Log("got to zero");
+                Hide();
             }
         }
     }

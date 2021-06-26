@@ -50,7 +50,7 @@ public class smash : MonoBehaviour
 
     void Update()
     {
-      if(Input.GetKeyUp(KeyCode.Q))
+      if(Input.GetKeyUp(KeyCode.Q) && transported == true)
       {
          // move the player to physics1 quest location instead of loading a new scene
         returnPlayerPosition();

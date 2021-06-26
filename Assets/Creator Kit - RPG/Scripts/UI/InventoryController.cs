@@ -49,7 +49,7 @@ namespace RPGM.UI
             if (displayCount > 0)
                 {
                     sizer.Show();
-                    StartCoroutine(TimeDelay());
+                    //StartCoroutine(TimeDelay());
                     // yield return null;
                 }
             else
