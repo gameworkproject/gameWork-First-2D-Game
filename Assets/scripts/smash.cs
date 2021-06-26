@@ -18,6 +18,8 @@ public class smash : MonoBehaviour
     Vector3 physics1_location;
     Vector3 currentLocation;
 
+    public static bool transported;
+
     void Start()
     {
       rb = hammer.GetComponent<Rigidbody2D>();
@@ -25,8 +27,7 @@ public class smash : MonoBehaviour
       counter = 0;
       physics1_location = new Vector3(36,2,0);
       currentLocation = player.transform.position;
-      
-
+      transported = false;
       //smashing.GetComponents<ParticleSystem>().enableEmission = false;
     }
 
@@ -47,12 +48,16 @@ public class smash : MonoBehaviour
 
       if(currentLocation == physics1_location)
       {
-        //player.GetComponent<CharacterController2D>().enabled = false;
-      
+        transported = true;
+        Debug.Log(transported);
+      }
+      if(transported == true)
+      {
 
         if (Input.GetKeyDown("space")  && counter < 5)
         {
-          hammer.transform.Rotate(0,0,-70);//TODO leave to abdullah
+          Debug.Log("Smash");
+          hammer.transform.Rotate(0,0,-70);
           hammerDown = true;
           hammerUp = false;
           StartCoroutine(Break());
@@ -79,6 +84,11 @@ public class smash : MonoBehaviour
             reward.transform.position = new Vector3(-2,6,0);
           }
       }
+    }
+
+    void FixedUpdate()
+    {
+
     }
 
     IEnumerator Break()

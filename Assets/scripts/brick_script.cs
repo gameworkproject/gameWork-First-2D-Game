@@ -38,9 +38,10 @@ public class brick_script : MonoBehaviour
             Debug.Log("welcome to task");
             //SceneManager.LoadScene(1);
             player.transform.position = physics1_location; // move the player to physics1 quest location instead of loading a new scene
+            Debug.Log(player.transform.position);
             player.transform.localScale = new Vector3(3.5f,3.5f,3.5f);
-
-            //turn off character controller
+            //sets variable to the smash script for physics to true, to allow smashing to begin
+            smash.transported = true;
         }
 
         else
