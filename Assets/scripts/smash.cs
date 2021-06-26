@@ -12,8 +12,8 @@ public class smash : MonoBehaviour
     public bool hammerUp;
     SpriteRenderer sr;
     BoxCollider2D bc;
-    float counter;
-    bool broken;
+    public float counter;
+    bool broken; 
     public GameObject player;
     Vector3 physics1_location;
     Vector3 currentLocation;
@@ -39,18 +39,26 @@ public class smash : MonoBehaviour
 
     void Update()
     {
+      if(Input.GetKeyUp(KeyCode.Q))
+      {
+        player.transform.position = new Vector3(-2,5,0);; // move the player to physics1 quest location instead of loading a new scene
+        player.transform.localScale = new Vector3(1,1,1);
+      }
+
       if(currentLocation == physics1_location)
       {
+        //player.GetComponent<CharacterController2D>().enabled = false;
+      
 
         if (Input.GetKeyDown("space")  && counter < 5)
         {
-          hammer.transform.Rotate(0,0,-70);
+          hammer.transform.Rotate(0,0,-70);//TODO leave to abdullah
           hammerDown = true;
           hammerUp = false;
           StartCoroutine(Break());
           counter = counter + 1;  
-
         }
+        
         else if(Input.GetKeyUp("space") && counter < 5)
         {
           hammer.transform.Rotate(0,0,70);
@@ -65,6 +73,11 @@ public class smash : MonoBehaviour
           //return to main land
           //reward.transform.position = new Vector3(-2,5,0);
         }
+
+        if(broken == true)
+          {
+            reward.transform.position = new Vector3(-2,6,0);
+          }
       }
     }
 
@@ -78,6 +91,7 @@ public class smash : MonoBehaviour
       yield return new WaitForSeconds(smashing.main.startLifetime.constantMax);
 
     }
+
 
 
     //void OnTriggerEnter2D(Collision other)
