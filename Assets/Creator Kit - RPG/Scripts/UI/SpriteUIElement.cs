@@ -38,10 +38,9 @@ namespace RPGM.UI
             {
                 direction = 1;
             }
-            Debug.Log("in show function");
+            //only add the counter to decreement how long the Inventory UI is shown IF the return/Enter key is NOT pressed
             if(inventory_button_clicked == false){
-            DelayAmount = 5;   
-            Debug.Log(DelayAmount);
+                DelayAmount = 5;   
             }
         }
 
@@ -91,14 +90,15 @@ namespace RPGM.UI
                 Show();
                 inventory_button_clicked = true;
             }
+            //keep decremeneting visibility counter every second
             if(DelayAmount > 0){
                 Timer += Time.deltaTime;
                 if (Timer >= 1){
                     Timer = 0;
                     DelayAmount -= 1;
-                    Debug.Log("minus 1 second");
                 }
             }
+            //hide inventory UI once visibility counter reaches zero and the return/enter key is not pressed
             if(DelayAmount == 0 && inventory_button_clicked == false){
                 //Debug.Log("got to zero");
                 Hide();

@@ -49,20 +49,13 @@ namespace RPGM.UI
             if (displayCount > 0)
                 {
                     sizer.Show();
-                    //StartCoroutine(TimeDelay());
-                    // yield return null;
                 }
             else
                 {
                     sizer.Hide();
-                    // yield return null;
                 }
         }
         //added this to ensure the left dialogue once an item is picked up is removed
-        IEnumerator TimeDelay()
-        {
-            yield return new WaitForSeconds(4);
-            this.sizer.Hide();
-        }
+       
     }
 }
