@@ -43,7 +43,6 @@ public class brick_script : MonoBehaviour
             //sets variable to the smash script for physics to true, to allow smashing to begin
             smash.transported = true;
         }
-
         else
         {
             collided = false;
