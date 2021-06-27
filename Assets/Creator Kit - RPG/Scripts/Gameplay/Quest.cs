@@ -122,6 +122,8 @@ namespace RPGM.Gameplay
             {
                 MessageBar.Show($"You collected: {i.name} x {i.count}");
                 model.AddInventoryItem(i);
+                //ADD marks to the inventory of the Character
+                //model.AddInventoryItem(marks);
                 UserInterfaceAudio.OnCollect();
                 i.gameObject.SetActive(false);
             }
