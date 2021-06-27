@@ -17,6 +17,8 @@ namespace RPGM.Gameplay
 
         GameModel model = Schedule.GetModel<GameModel>();
 
+        public GameObject marks; 
+
         void OnEnable()
         {
             quests = gameObject.GetComponentsInChildren<Quest>();
