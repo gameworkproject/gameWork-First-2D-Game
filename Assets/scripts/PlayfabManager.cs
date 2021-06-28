@@ -53,6 +53,7 @@ public class PlayfabManager : MonoBehaviour
         };
         PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnError);
     }
+    //all the button click listeners
     void RegisterOnClick()
     {
         Debug.Log("register button clicked");
@@ -66,14 +67,11 @@ public class PlayfabManager : MonoBehaviour
     void ForgotPasswordOnClick()
     {
         Debug.Log("Forgot Password clicked");
+        ResetPasswordButton();
     }
     //registration success
     void OnRegisterSuccess(RegisterPlayFabUserResult result) {
         messageText.text = "Register Success!";
-    }
-    void OnError(PlayFabError error){
-        messageText.text = "Error!";
-        Debug.Log(error);
     }
     //Login Button
     public void LoginButton(){
@@ -88,6 +86,18 @@ public class PlayfabManager : MonoBehaviour
         messageText.text = "Login successful baby!";
     }
     public void ResetPasswordButton(){
-
+        var request = new SendAccountRecoveryEmailRequest {
+            Email = emailInput.text,
+            TitleId = "44DB7"
+        };
+        PlayFabClientAPI.SendAccountRecoveryEmail(request, OnPasswordReset, OnError);
+    }
+    void OnPasswordReset(SendAccountRecoveryEmailResult result){
+        messageText.text = "Password reset email has been sent";
+    }
+    //generic error
+    void OnError(PlayFabError error){
+        messageText.text = "Error!";
+        Debug.Log(error);
     }
 }
