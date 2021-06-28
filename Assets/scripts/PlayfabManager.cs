@@ -12,10 +12,14 @@ public class PlayfabManager : MonoBehaviour
     public InputField emailInput;
     public InputField passwordInput;
     public Button registerButton;
+    public Button loginButton;
+    public Button forgotPasswordButton;
     void Start()
     {   
         // Login();
         registerButton.onClick.AddListener(RegisterOnClick);
+        loginButton.onClick.AddListener(LoginOnClick);
+        forgotPasswordButton.onClick.AddListener(ForgotPasswordOnClick);
     }
 
     // Update is called once per frame
@@ -54,17 +58,34 @@ public class PlayfabManager : MonoBehaviour
         Debug.Log("register button clicked");
         RegisterButton();
     }
-
+    void LoginOnClick()
+    {
+        Debug.Log("Login button clicked");
+        LoginButton();
+    }
+    void ForgotPasswordOnClick()
+    {
+        Debug.Log("Forgot Password clicked");
+    }
+    //registration success
     void OnRegisterSuccess(RegisterPlayFabUserResult result) {
         messageText.text = "Register Success!";
     }
     void OnError(PlayFabError error){
-        messageText.text = "Failed to register";
+        messageText.text = "Error!";
         Debug.Log(error);
     }
-
+    //Login Button
     public void LoginButton(){
-
+        var request = new LoginWithEmailAddressRequest {
+            Email = emailInput.text,
+            Password = passwordInput.text
+        };
+        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
+    }
+    void OnLoginSuccess(LoginResult result){
+        Debug.Log("Successful login attempt");
+        messageText.text = "Login successful baby!";
     }
     public void ResetPasswordButton(){
 
