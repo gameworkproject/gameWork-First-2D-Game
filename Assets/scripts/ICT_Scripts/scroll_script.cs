@@ -10,9 +10,9 @@ public class scroll_script : MonoBehaviour
   // open a coding terminal for the student
 
     public GameObject book; // hammer to break the rocks
-    public bool book_gone;
-    public bool collided;
-    public GameObject player;
+    public bool book_gone; // to check of codeBook was picked up by player
+    public bool collided; //to check if player collided with scroll
+    public GameObject player; // player reference
     public GameObject ICT_canvas; // the canvas where student will edit his code
     
     void Start()
@@ -27,9 +27,14 @@ public class scroll_script : MonoBehaviour
         {
             book_gone = true;
         }
+
+        if(Input.GetKeyDown(KeyCode.Q)) // close the code editor for player
+        {
+            ICT_canvas.SetActive(false);
+        }
     }
     
-    void OnCollisionEnter2D(Collision2D col) // if player bumps into the origial brick
+    void OnCollisionEnter2D(Collision2D col) // if player bumps into the scroll
     {
         collided = true;
 
