@@ -15,8 +15,8 @@ public class smash : MonoBehaviour
     public float counter;
     bool broken; 
     public GameObject player;
-    Vector3 physics1_location;
-    Vector3 currentLocation;
+    Vector2 physics1_location;
+    Vector2 currentLocation;
     public GameObject originalBrick;
 
     SpriteRenderer sr_originalBrick;
@@ -27,10 +27,10 @@ public class smash : MonoBehaviour
     void Start()
     {
       rb = hammer.GetComponent<Rigidbody2D>();
-      hammerUp = true;
-      counter = 0;
-      physics1_location = new Vector3(36,2,0);
-      currentLocation = player.transform.position;
+      hammerUp = true; // state of hammer upright at the beginning
+      counter = 0; // number of hammer hits
+      physics1_location = new Vector2(36,2); 
+      
       transported = false;
 
        sr_originalBrick = originalBrick.GetComponent<SpriteRenderer>();
@@ -44,24 +44,28 @@ public class smash : MonoBehaviour
     {
      
       smashing = GetComponentInChildren<ParticleSystem>();
-      sr = GetComponent<SpriteRenderer>();
-      bc = GetComponent<BoxCollider2D>();
+      sr = GetComponent<SpriteRenderer>(); // sprite renderer of the brick to be smashed
+      bc = GetComponent<BoxCollider2D>(); // box collider of the brick to be smashed
     }
 
     void Update()
     {
+      currentLocation = player.transform.position;
       if(Input.GetKeyUp(KeyCode.Q) && transported == true)
       {
          // move the player to physics1 quest location instead of loading a new scene
         returnPlayerPosition();
       }
 
+
       if(currentLocation == physics1_location)
       {
-        transported = true;
+        transported = true; // check if player was transported to quest location
         Debug.Log(transported);
       }
-      if(transported == true)
+      else{transported = false;} // set transported bool o false in case player is back to villages
+
+      if(transported == true) 
       {
 
         if (Input.GetKeyDown("space")  && counter < 5)
@@ -92,14 +96,16 @@ public class smash : MonoBehaviour
 
             Destroy(originalBrick);
             
-            sr.enabled = false;
-            transported = false;
-            broken = false;
-            reward.transform.position = new Vector3(-2,6,0);
-            returnPlayerPosition(); 
+            
+            sr.enabled = false; // disable the rendering of the smashed brick
+            transported = false; // disable the 
+            broken = false; // state of the brick to smash
+            reward.transform.position = new Vector3(-2,6,0); // bring the red_gem as a reward inmain village
+            returnPlayerPosition(); // return the player to main land
+
+            Destroy(this);
           }
-         // 
-          //return to main land
+        
         }
 
 
