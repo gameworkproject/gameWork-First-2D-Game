@@ -33,6 +33,7 @@ namespace RPGM.Gameplay
             MessageBar.Show($"You collected: {name} x {count}");
             model.AddInventoryItem(this);
             UserInterfaceAudio.OnCollect();
+            Debug.Log(count);
             gameObject.SetActive(false);
         }
     }

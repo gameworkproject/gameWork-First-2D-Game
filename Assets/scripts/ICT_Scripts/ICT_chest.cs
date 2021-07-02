@@ -27,8 +27,8 @@ public class ICT_chest : MonoBehaviour
     //and pop the book out of the chest//
     void OnCollisionEnter2D(Collision2D col) 
     {
-        book.transform.position = new Vector2(-2.5f,-2); // codebook to appear out of toolbox 
-        nameOfSprite = player.GetComponent<SpriteRenderer>().sprite.name; 
+        book.transform.position = new Vector2(-2.5f,-2f); // codebook to appear out of toolbox 
+        nameOfSprite = book.GetComponent<SpriteRenderer>().sprite.name; 
         Debug.Log(nameOfSprite);
 
         Destroy(this); // kill the script component to prevent the box from making more than one hammer
