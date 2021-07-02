@@ -29,23 +29,24 @@ public class brick_script : MonoBehaviour
         }
     }
     
-    void OnCollisionEnter2D(Collision2D col) // if player bumps into the origial brick
+    void OnCollisionEnter2D(Collision2D col) 
     {
         collided = true;
 
-        if(hammer_gone == true)             //if hammer was picked up by player
+        if(hammer_gone == true)
         {
             Debug.Log("welcome to task");
+            //SceneManager.LoadScene(1);
             player.transform.position = physics1_location; // move the player to physics1 quest location instead of loading a new scene
+            Debug.Log(player.transform.position);
             player.transform.localScale = new Vector3(3.5f,3.5f,3.5f);
-
-            //turn off character controller
+            //sets variable to the smash script for physics to true, to allow smashing to begin
+            smash.transported = true;
         }
-
         else
         {
             collided = false;
-            Debug.Log("go get your tools");
+            Debug.Log("go see mr ragee");
         }
     }
 
