@@ -115,6 +115,8 @@ public class smash : MonoBehaviour
     {
       player.transform.position = new Vector3(-2,5,0); // move the player to physics1 quest location instead of loading a new scene
       player.transform.localScale = new Vector3(1,1,1);
+      counter = 0;
+      transported = false;
     }
 
     IEnumerator Break()
