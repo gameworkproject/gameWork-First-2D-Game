@@ -28,10 +28,12 @@ public class scroll_script : MonoBehaviour
             book_gone = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.Q)) // close the code editor for player
-        {
-            ICT_canvas.SetActive(false);
-        }
+        
+    ////this funcion is replaced with the QUIT BUTTON in readInput.cs////
+        //if(Input.GetKeyDown(KeyCode.Q)) // close the code editor for player
+        //{
+        //    ICT_canvas.SetActive(false);
+       // }
     }
     
     void OnCollisionEnter2D(Collision2D col) // if player bumps into the scroll
