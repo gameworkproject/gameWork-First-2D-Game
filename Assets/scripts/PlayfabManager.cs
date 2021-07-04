@@ -15,6 +15,8 @@ public class PlayfabManager : MonoBehaviour
     public Button registerButton;
     public Button loginButton;
     public Button forgotPasswordButton;
+
+    public LevelLoader levelLoader;
     void Start()
     {   
         // Login();
@@ -30,10 +32,7 @@ public class PlayfabManager : MonoBehaviour
     }
     
     //functiont to load scene
-    void switchScene (string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
+   
 
     public void RegisterButton(){
         var request = new RegisterPlayFabUserRequest{
@@ -62,7 +61,7 @@ public class PlayfabManager : MonoBehaviour
     //registration success
     void OnRegisterSuccess(RegisterPlayFabUserResult result) {
         messageText.text = "Register Success!";
-        switchScene("BlankScene");
+        levelLoader.LoadNextScene("BlankScene");
     }
     //Login Button
     public void LoginButton(){
@@ -75,7 +74,7 @@ public class PlayfabManager : MonoBehaviour
     void OnLoginSuccess(LoginResult result){
         Debug.Log("Successful login attempt");
         messageText.text = "Login successful baby!";
-        switchScene("BlankScene");
+        levelLoader.LoadNextScene("BlankScene");
     }
     public void ResetPasswordButton(){
         var request = new SendAccountRecoveryEmailRequest {
