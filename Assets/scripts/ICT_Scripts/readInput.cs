@@ -17,6 +17,8 @@ public class readInput : MonoBehaviour
     public InputField inputField; 
     public bool submitButtonPressed;
 
+    public GameObject error_msg;
+
     
     void Start()
     {
@@ -24,11 +26,18 @@ public class readInput : MonoBehaviour
         correctCode = "x=5;"; // the required task is to declare a variable x=5; 
         SubmitButton.onClick.AddListener(SubmitButtonHandler);  // execute the ENETR button function
         QuitButton.onClick.AddListener(QuitButtonHandler);  // execute the QUIT button function
+        error_msg.SetActive(false);
     }
 
     void Update()
     {
         inputField.ActivateInputField();
+
+        if(Input.anyKey)
+        {
+            error_msg.SetActive(false); // remove error messsage if any key is pressed
+        }
+
         if(submitButtonPressed)
         {
             if(code == correctCode ) // check if the student's input is the correct code
@@ -42,6 +51,7 @@ public class readInput : MonoBehaviour
             else
             {
                 Debug.Log("ERROR");
+                error_msg.SetActive(true); // show error message if code is wrong
             }
 
             submitButtonPressed = false;
