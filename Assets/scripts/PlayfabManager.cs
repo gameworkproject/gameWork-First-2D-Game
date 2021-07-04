@@ -4,6 +4,7 @@ using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayfabManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayfabManager : MonoBehaviour
     public Button registerButton;
     public Button loginButton;
     public Button forgotPasswordButton;
+
+    public LevelLoader levelLoader;
     void Start()
     {   
         // Login();
@@ -27,23 +30,9 @@ public class PlayfabManager : MonoBehaviour
     {
         
     }
-    //trying out login via annonymous user
-    // void Login() {
-    //     var request = new LoginWithCustomIDRequest {
-    //         CustomId = SystemInfo.deviceUniqueIdentifier,
-    //         CreateAccount = true
-    //     };
-    //     PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
-    // }
-
-    // void OnSuccess(LoginResult result){
-    //     Debug.Log("Successful login/account create!");
-    // }
     
-    // void OnError (PlayFabError error){
-    //     Debug.Log("error while logging in/creating account");
-    //     Debug.Log(error.GenerateErrorReport());
-    // }
+    //functiont to load scene
+   
 
     public void RegisterButton(){
         var request = new RegisterPlayFabUserRequest{
@@ -72,6 +61,7 @@ public class PlayfabManager : MonoBehaviour
     //registration success
     void OnRegisterSuccess(RegisterPlayFabUserResult result) {
         messageText.text = "Register Success!";
+        levelLoader.LoadNextScene("BlankScene");
     }
     //Login Button
     public void LoginButton(){
@@ -84,6 +74,7 @@ public class PlayfabManager : MonoBehaviour
     void OnLoginSuccess(LoginResult result){
         Debug.Log("Successful login attempt");
         messageText.text = "Login successful baby!";
+        levelLoader.LoadNextScene("BlankScene");
     }
     public void ResetPasswordButton(){
         var request = new SendAccountRecoveryEmailRequest {
