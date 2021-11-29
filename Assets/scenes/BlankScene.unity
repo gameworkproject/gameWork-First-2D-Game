@@ -6281,7 +6281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5541812498119094470, guid: a6ecdc63374074e6eb42a738a5683a91, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 3
+      value: 3.0000002
       objectReference: {fileID: 0}
     - target: {fileID: 5541812498119094470, guid: a6ecdc63374074e6eb42a738a5683a91, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[1].second.m_AnimationSpeed
@@ -6317,7 +6317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5541812498119094470, guid: a6ecdc63374074e6eb42a738a5683a91, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[9].second.m_AnimationSpeed
-      value: 3
+      value: 3.0000002
       objectReference: {fileID: 0}
     - target: {fileID: 5541812498119094470, guid: a6ecdc63374074e6eb42a738a5683a91, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[10].second.m_AnimationSpeed
@@ -18871,6 +18871,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 3caa1e5e0e6c343d69793b2b5dd95939, type: 2}
+    - target: {fileID: 8835582639856596521, guid: 74b5c6b26f0fc4028b9aac1a7a36767d, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2612815
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835582639856596521, guid: 74b5c6b26f0fc4028b9aac1a7a36767d, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.36935925
+      objectReference: {fileID: 0}
     - target: {fileID: 8835582639856596522, guid: 74b5c6b26f0fc4028b9aac1a7a36767d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -25167,6 +25175,10 @@ PrefabInstance:
     - target: {fileID: 1318976432026030867, guid: d96c0846c7d644f72bfbf301de1def5c, type: 3}
       propertyPath: m_Name
       value: Controllers
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318976432026030868, guid: d96c0846c7d644f72bfbf301de1def5c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1318976432026030871, guid: d96c0846c7d644f72bfbf301de1def5c, type: 3}
       propertyPath: m_RootOrder

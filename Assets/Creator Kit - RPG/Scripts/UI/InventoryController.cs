@@ -39,6 +39,8 @@ namespace RPGM.UI
                 displayCount++;
                 var e = Instantiate(elementPrototype);
                 e.transform.parent = transform;
+
+                e.transform.localScale = new Vector3(0.5f,0.5f,0.5f);
                 e.transform.localPosition = cursor;
                 e.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = model.GetInventorySprite(i);
                 e.transform.GetChild(1).GetComponent<TextMeshPro>().text = $"x {count}";
